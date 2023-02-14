@@ -22,7 +22,7 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    def all(self, cls=None):
+   def all(self, cls=None):
         """returns the dictionary __objects"""
         if not cls:
             return self.__objects
@@ -32,6 +32,7 @@ class FileStorage:
         else:
             return {k: v for k, v in self.__objects.items()
                     if v.__class__ == cls}
+
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
@@ -57,11 +58,12 @@ class FileStorage:
         except:
             pass
 
-    def delete(self, obj=None):
+      def delete(self, obj=None):
         """delete obj from __objects if it’s inside"""
         if obj is not None:
             del self.__objects[obj.__class__.__name__ + '.' + obj.id]
             self.save()
+
 
     def close(self):
         """Deserialize JSON file to objects"""
